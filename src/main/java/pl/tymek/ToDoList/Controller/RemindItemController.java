@@ -3,6 +3,8 @@ package pl.tymek.ToDoList.Controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import pl.tymek.ToDoList.Service.RemindItemService;
 import pl.tymek.ToDoList.entity.RemindItem;
 import pl.tymek.ToDoList.entity.RemindType;
@@ -24,5 +26,14 @@ public class RemindItemController {
         model.addAttribute("types", RemindType.values());
         return "display_all";
     }
-
+    @PostMapping("/add")
+    public String addItem(@ModelAttribute RemindItem item){
+        service.saveRemindItem(item);
+        return "redirect:/display";
+    }
+    @PostMapping("/update")
+    public String updateItem(@ModelAttribute RemindItem item){
+        service.saveRemindItem(item);
+        return "redirect:/display";
+    }
 }
