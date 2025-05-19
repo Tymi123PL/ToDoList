@@ -8,9 +8,14 @@ import java.util.List;
 
 @Service
 public class RemindItemService {
+
         private RemindItemRepository repository;
 
-        public List<RemindItem> getAllRemindItem(){
+    public RemindItemService(RemindItemRepository repository) {
+        this.repository = repository;
+    }
+
+    public List<RemindItem> getAllRemindItem(){
             return repository.findAll();
         }
         public void saveRemindItem(RemindItem remindItem){

@@ -9,6 +9,11 @@ import pl.tymek.ToDoList.entity.RemindType;
 
 @Controller
 public class RemindItemController {
+
+    public RemindItemController(RemindItemService service) {
+        this.service = service;
+    }
+
     private RemindItemService service;
 
 
