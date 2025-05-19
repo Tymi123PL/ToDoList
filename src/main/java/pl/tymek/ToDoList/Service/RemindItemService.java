@@ -5,6 +5,7 @@ import pl.tymek.ToDoList.entity.RemindItem;
 import pl.tymek.ToDoList.repository.RemindItemRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RemindItemService {
@@ -25,5 +26,7 @@ public class RemindItemService {
     public void deleteRemindItemById(Long id){
         repository.deleteById(id);
     }
-
+    public Optional<RemindItem> findById(Long id){
+        return repository.findById(id);
+    }
 }
