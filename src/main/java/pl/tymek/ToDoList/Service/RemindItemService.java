@@ -13,7 +13,7 @@ public class RemindItemService {
         public List<RemindItem> getAllRemindItem(){
             return repository.findAll();
         }
-        public void AddRemindItem(RemindItem remindItem){
+        public void saveRemindItem(RemindItem remindItem){
             repository.save(remindItem);
         }
 }
