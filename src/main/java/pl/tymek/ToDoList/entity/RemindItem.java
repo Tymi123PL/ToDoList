@@ -2,6 +2,7 @@ package pl.tymek.ToDoList.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
@@ -12,6 +13,7 @@ public class RemindItem {
     private long id;
     private String name;
     private String description;
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime date;
     @Enumerated(EnumType.STRING)
     private RemindType type;
