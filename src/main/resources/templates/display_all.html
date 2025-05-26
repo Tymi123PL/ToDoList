@@ -10,7 +10,7 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="text-primary">📋 Lista przypomnień</h2>
         <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addModal"
-                th:if="${remindItem.id == null}">➕ Dodaj nowe
+                th:if="${editMode != true}">➕ Dodaj nowe
         </button>
     </div>
 
