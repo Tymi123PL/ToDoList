@@ -23,9 +23,12 @@ public class SchedulerService {
         LocalDate tomorrow = LocalDate.now().plusDays(1);
         List<RemindItem> allRemindItem = remindItemservice.getAllRemindItem();
         for(RemindItem item : allRemindItem){
-
-            if(item.getDate().toLocalDate().equals(tomorrow)){
-                emailService.sendReminder("tymon.pierzchot@gmail.com",item.getName(),item.getDescription());
+            try {
+                if (item.getDate().toLocalDate().equals(tomorrow)) {
+                    emailService.sendReminder("tymon.pierzchot@gmail.com", "Jutrzejsze wydarzenie: "+item.getName(), "Oto twoje przypomnienie, że jutro ma miejsce następujące wydarzenie:\n"+item.getDescription());
+                }
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
 
         }
