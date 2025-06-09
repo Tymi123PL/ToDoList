@@ -2,10 +2,7 @@ package pl.tymek.ToDoList.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.tymek.ToDoList.Service.RemindItemService;
 import pl.tymek.ToDoList.entity.RemindItem;
 import pl.tymek.ToDoList.entity.RemindType;
@@ -21,6 +18,13 @@ public class RemindItemController {
 
     private RemindItemService service;
 
+    @GetMapping({"/show"})
+    public String displayOnly(Model model){
+        model.addAttribute("remindItems", service.getAllRemindItem());
+        model.addAttribute("remindItem", new RemindItem());
+        model.addAttribute("types", RemindType.values());
+        return "display_only";
+    }
 
     @GetMapping({"/","display","home"})
     public String displayAllItems(Model model){
